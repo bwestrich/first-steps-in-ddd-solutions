@@ -1,0 +1,35 @@
+@startuml
+class com.harmellaw.investigation.PreChargeDecisionCase {
++ PNCId pncId
+- Map<Suspect,OffenceAdvice> offenceAdvice
++ void recordAlternativeOffenceAdvice(Suspect,OffenceAdvice)
++ OffenceAdvice getOffenceAdviceFor(Suspect)
++ Set<Suspect> getSuspects()
+}
+class com.harmellaw.investigation.Suspect {
+- CriminalOffence offence
+}
+class com.harmellaw.investigation.PoliceInvestigation {
++ PNCId pncId
++ Set<Suspect> suspects
+}
+class com.harmellaw.preparation.CriminalCase {
++ PNCId pncId
++ Set<Defendant> defendants
+}
+class com.harmellaw.investigation.OffenceAdvice {
+}
+class com.harmellaw.PNCId {
++ String value
+}
+class com.harmellaw.preparation.Defendant {
+}
+class com.harmellaw.PublicProsecutionService {
++ PreChargeDecisionCase receiveRequestForPreChargeDecision(PoliceInvestigation)
++ CriminalCase acceptCaseFile(PoliceCaseFile)
+}
+class com.harmellaw.preparation.PoliceCaseFile {
++ PNCId pncId
++ Set<Defendant> defendants
+}
+@enduml
